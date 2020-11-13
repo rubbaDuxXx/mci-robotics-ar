@@ -90,7 +90,7 @@
     // Once a connection has been made, make a subscription and send a message.
     console.log("onConnect");
     //client.subscribe("World");
-    fi = document.querySelector(".frequency-input")
+    fi = document.querySelector(".frequency-input");
     let myObj = { name: "MQTT", x_freq: fi.value };
     message = new Paho.MQTT.Message(myObj);
     message.destinationName = "maqiatto@mytom.at/test";
