@@ -37,14 +37,14 @@
   <script src="like_button.js"></script>
     <script>
       // Create a client instance
-    client = new Paho.MQTT.Client("broker.hivemq.com", 8000, "clientId1fjndsalisafnas");
+    client = new Paho.MQTT.Client("maqiatto.com", 8883, "clientId1fjndsalisafnas");
     
     // set callback handlers
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
     
     // connect the client
-    client.connect({onSuccess:onConnect,useSSL:true});
+    client.connect({onSuccess:onConnect,useSSL:true,username:"maqiatto@mytom.at",password:"k0k0l0l0"});
     
     
     // called when the client connects
@@ -53,7 +53,7 @@
       console.log("onConnect");
       //client.subscribe("World");
       message = new Paho.MQTT.Message("Hello");
-      message.destinationName = "paho/things/Tx";
+      message.destinationName = "maqiatto@mytom.at/test";
       client.send(message);
     }
     
