@@ -44,56 +44,6 @@
     }
   </style>
   <body style="margin : 0px; overflow: hidden;">
-    <!-- Load our React component. -->
-  <script src="like_button.js"></script>
-    <script>
-      // Create a client instance
-    client = new Paho.MQTT.Client("hairdresser.cloudmqtt.com", 35499, "clientId1fjndsalisafnas");
-    
-    // set callback handlers
-    client.onConnectionLost = onConnectionLost;
-    client.onMessageArrived = onMessageArrived;
-    
-    // connect the client
-    client.connect({onSuccess:onConnect,useSSL:true,userName:"cptzbkfu",password:"6i-90zLrnYI-"});
-    
-    
-    // called when the client connects
-    function onConnect() {
-      // Once a connection has been made, make a subscription and send a message.
-      console.log("onConnect");
-      //client.subscribe("World");
-      fi = document.querySelector(".frequency-input")
-      let myObj = { name: "MQTT", x_freq: fi.value };
-      message = new Paho.MQTT.Message(myObj);
-      message.destinationName = "maqiatto@mytom.at/test";
-      client.send(message);
-    }
-    
-    // called when the client loses its connection
-    function onConnectionLost(responseObject) {
-      if (responseObject.errorCode !== 0) {
-        console.log("onConnectionLost:"+responseObject.errorMessage);
-      }
-    }
-    
-    // called when a message arrives
-    function onMessageArrived(message) {
-      console.log("onMessageArrived:"+message.payloadString);
-    }
-      </script>
-      <script>
-        window.onload = function () {
-          document
-            .querySelector(".say-hi-button")
-            .addEventListener("click", function () {
-              // here you can change also a-scene or a-entity properties, like
-              // changing your 3D model source, size, position and so on
-              // or you can just open links, trigger actions...
-              alert("Hi there!");
-            });
-        };
-      </script>
     <div class="buttons">
       <button class="say-hi-button">Say Hi</button>
       <input class="frequency-input>">Enter Frequency</input>
@@ -121,5 +71,55 @@
 
       <a-entity camera></a-entity>
     </a-scene>
+        <!-- Load our React component. -->
+  <script src="like_button.js"></script>
+  <script>
+    // Create a client instance
+  client = new Paho.MQTT.Client("hairdresser.cloudmqtt.com", 35499, "clientId1fjndsalisafnas");
+  
+  // set callback handlers
+  client.onConnectionLost = onConnectionLost;
+  client.onMessageArrived = onMessageArrived;
+  
+  // connect the client
+  client.connect({onSuccess:onConnect,useSSL:true,userName:"cptzbkfu",password:"6i-90zLrnYI-"});
+  
+  
+  // called when the client connects
+  function onConnect() {
+    // Once a connection has been made, make a subscription and send a message.
+    console.log("onConnect");
+    //client.subscribe("World");
+    fi = document.querySelector(".frequency-input")
+    let myObj = { name: "MQTT", x_freq: fi.value };
+    message = new Paho.MQTT.Message(myObj);
+    message.destinationName = "maqiatto@mytom.at/test";
+    client.send(message);
+  }
+  
+  // called when the client loses its connection
+  function onConnectionLost(responseObject) {
+    if (responseObject.errorCode !== 0) {
+      console.log("onConnectionLost:"+responseObject.errorMessage);
+    }
+  }
+  
+  // called when a message arrives
+  function onMessageArrived(message) {
+    console.log("onMessageArrived:"+message.payloadString);
+  }
+    </script>
+    <script>
+      window.onload = function () {
+        document
+          .querySelector(".say-hi-button")
+          .addEventListener("click", function () {
+            // here you can change also a-scene or a-entity properties, like
+            // changing your 3D model source, size, position and so on
+            // or you can just open links, trigger actions...
+            alert("Hi there!");
+          });
+      };
+    </script>
   </body>
 </html>
