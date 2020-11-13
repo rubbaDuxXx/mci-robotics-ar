@@ -92,7 +92,8 @@
     //client.subscribe("World");
     fi = document.querySelector(".frequency-input");
     let myObj = { name: "MQTT", x_freq: fi.value };
-    message = new Paho.MQTT.Message(myObj);
+    console.log(myObj);
+    message = new Paho.MQTT.Message(JSON.stringify(myObj));
     message.destinationName = "maqiatto@mytom.at/test";
     client.send(message);
   }
