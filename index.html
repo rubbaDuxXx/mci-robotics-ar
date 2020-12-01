@@ -11,7 +11,7 @@
     </head>
 
   <body style="margin : 0px; overflow: hidden;">
-    <a-scene arjs vr-mode-ui="enabled: true" renderer="antialias: true; logarithmicDepthBuffer:false" id="arscene" onclick="openFullscreen();">
+    <a-scene arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;" vr-mode-ui="enabled: true" renderer="antialias: true; logarithmicDepthBuffer:false" id="arscene" onclick="openFullscreen();">
       <a-assets>
         <a-mixin
           id="marker"
@@ -25,7 +25,7 @@
       </a-assets>
 
       <!-- handle hiro marker -->
-		<a-marker type="pattern" url="./patterns/pattern-qrcode.patt">
+		<a-marker preset="hiro">
     <a-plane position="0 0 0" rotation="-90 0 0" width="2.1" height="2.1" color="#184787">
 
       <a-image position="0 1.6 0.1"src="#mci-logo" width="2.1" height=1></a-image>
